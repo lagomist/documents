@@ -1,0 +1,72 @@
+-------------------------------Mate 桌面卡住-------------------------------------
+sudo restart lightdm                重启图形界面
+sudo pkill Xorg
+
+
+---------------------------------Ubuntu修改主机名---------------------
+查看当前主机名
+hostnamectl
+修改主机名为HOST
+sudo hostnamectl set-hostname HOST
+
+---------------------------------Ubuntu修改用户名---------------------
+一、修改密码
+1.转为root用户：sudo su
+2.sudo passwd user	(user 是对应的用户名)
+3.修改密码成功，重启
+
+二、修改用户名
+1.转为root用户：sudo su
+2.vim /etc/passwd	修改用户名为新的用户名和其后面的目录名
+3.vim /etc/shadow	找到代表你的那一行，修改用户名为新用户名
+4.vim /etc/group	全部修改
+5.执行以下命令，给目录重命名。
+	cd /home
+	sudo mv old_user_name new_user_name
+6.vim /etc/sudoers 	修改所有原有用户名
+7.重启
+
+三、修改图形界面登陆用户
+sudo vim /etc/lightdm/lightdm.conf
+修改user：
+[Seat:*]
+Aautologin-guest=false
+Aautologin-user=user
+Aautologin-user-timeout=0
+
+四、WSL1修改登陆用户
+vim /etc/wsl.conf	WSL中编辑修改用户
+
+
+
+---------------------------------相关功能路径---------------------------------------
+软件源路径
+/etc/apt/sources.list
+/etc/apt/sources.list.d/*
+
+CPU温度路径
+/sys/class/thermal/thermal_zone0/temp
+
+用户全局变量路径
+~/.profile
+~/.bashrc
+
+---------------------------------功能操作指令-----------------------------------------
+SSH 文件传输
+
+a. file_path：需要替换为要上传文件的路径
+b. orangepi：修改为开发板 linux 系统的用户名
+c. 192.168.xx.xx: 为开发板的 IP 地址，请根据实际情况进行修改
+d. /home/orangepi: 修改为开发板 linux 系统中的路径
+
+scp file_path orangepi@192.168.xx.xx:/home/orangepi/
+
+将文件从远程机器复制到本地机器
+
+rsync username@ip_address:/home/username/filename .
+
+将文件从本地机器复制到远程机器
+
+rsync filename username@ip_address:/home/username
+
+

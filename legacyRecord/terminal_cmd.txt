@@ -1,0 +1,84 @@
+mkdir	创建文件夹
+touch	创建文件
+
+
+创建服务：
+服务单元文件路径：/etc/systemd/system/my_program.service
+重新加载systemd守护进程以使更改生效：sudo systemctl daemon-reload
+启动您的服务：sudo systemctl start my_program
+检查服务的状态：sudo systemctl status my_program
+在系统启动时自动启动：sudo systemctl enable my_program
+
+停止服务：sudo systemctl stop [service_name]
+永久性禁用服务：sudo systemctl disable [service_name]
+需要时重新启用服务：sudo systemctl enable [service_name]
+
+
+
+修改文件权限
+
+说明 chmod是分配文件权限，一般后面会带三个数字，例如 chmod abc led.c （abc代表三个数字，三个数字其实是对应的二进制）
+a 是文件所有者的权限 b 与文件所有者同属一个用户组的其他按用户的权限 c 其他用户组的权限
+权限一共有三种 r（可读） w（可写） x（可执行） 其中 有可读r权限，则r是4 有可写w权限，则w是2 有可执行x权限，则x是1 （其实是二进制111，r是第一个1代表十进制4 ， w是第二个1代表2，x是第三个1代表1）
+所以一共有四种权限分配（默认都是可读的）
+① rw- （可读可写不可执行）  二进制是110 转化为十进制是4+2 = 6
+② r-x（可读不可写可执行） 二进制是101 转化为十进制是4+1 = 5
+③ rwx（可读可写可执行）  二进制是111 转化为十进制是4+2+1 = 7
+④ r–（只可读） 二进制100 转化为十进制是4
+例如
+chmod 777 led.c（所有人都有可读可写可执行的权限）
+chmod 765 led.c（文件所有者有所有权限，同用户组的有读写权限，不同组的其他用户有读和执行权限）
+
+
+lsb_release -a						查看系统版本
+sudo apt-get autoremove				清理不再需要的依赖项
+sudo ufw status						查看防火墙状态
+sudo ufw allow 22/tcp 				允许所有的外部IP访问本机的22/tcp (ssh)端口
+rm -r /path/to/directory/*			删除目录下全部文件
+grep -r "a\b" /path/                递归查找目录下a或b字样的文件（-r 递归   \ 逻辑或   ）
+
+
+
+xdg-open .										打开默认文件管理器
+sudo tar zxvf FILE_NAME.tar.gz					解压 .tar.gz 文件
+tar zcvf FileName.tar.gz DirName				压缩 .tar.gz
+tar -xf file.tar								解压 .tar.xz 文件
+tar -xf file.tar.xz -C /path/to/directory		解压 .tar.xz 文件到指定目录
+
+
+
+rm			删除文件或目录。
+cp			复制文件或目录。
+mv			移动或重命名文件或目录。
+cat			显示文件内容。
+grep			在文件中搜索指定的文本模式。
+
+pwd 			显示当前工作目录的绝对路径。
+history 			显示之前执行的命令历史记录。
+top 			显示当前系统资源的使用情况和运行的进程。
+ps 			显示当前正在运行的进程。
+kill 			结束一个正在运行的进程。
+
+chmod 			更改文件或目录的权限。
+chown 			更改文件或目录的所有者。
+tar 			用于创建和提取归档文件。
+wget 			从网络上下载文件。
+curl 			从网络上下载文件并将其输出到终端。
+
+find 			用于查找文件或目录。
+du 			显示目录或文件占用的磁盘空间。
+df 			显示磁盘空间使用情况。
+ssh 			远程登录到另一个计算机。
+scp 			安全地复制文件到远程计算机。
+
+rsync 			使用远程主机之间的差异来同步文件。
+uname 			显示当前系统的名称和版本。
+ifconfig 			显示网络接口的配置信息。
+ping 			测试网络连接是否正常。
+traceroute 		显示到目标主机的网络路径。
+
+ps              查看当前进程
+kill -s 9 PID   杀死进程号为PID的进程
+
+
+

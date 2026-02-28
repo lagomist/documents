@@ -1,0 +1,122 @@
+----------------------------------------------开机配置-------------------------------------------------------
+
+// 参考链接： https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview
+
+用户名：ubuntu
+密码：ubuntu
+登陆后要求更改密码，需要先输入一次原密码，才可以更改密码，不然会闪退。
+
+修改用户名：
+1.创建新用户
+
+sudo adduser 新用户名
+
+sudo passwd 新用户名
+
+设置给予的权限
+sudo vim /etc/sudoers
+
+2.登陆新用户
+3.删除老用户
+
+sudo deluser 老用户名 	//删除老用户
+
+连接WiFi：
+
+打开文件：
+sudo nano /etc/netplan/50-cloud-init.yaml
+
+修改配置信息：
+wifis:
+  wlan0:
+    dhcp4: true
+    optional: true
+    access-points:
+      "home network":
+        password: "123456789"
+
+应用并重启
+sudo netplan apply
+sudo reboot 
+----------------------------ubuntu 16.04 server  WiFi连接------------------------------
+参考链接：
+https://zhuanlan.zhihu.com/p/148657914
+步骤一：重新启动网络管理服务
+运行如下命令重新启动网络管理服务：
+
+sudo service network-manager restart
+
+步骤二：搜索Wi-Fi
+
+sudo nmcli dev wifi
+
+断开连接
+sudo nmcli dev dis wlan0
+或者
+nmcli con del SSID
+
+步骤三：连接Wi-Fi
+运行如下命令以连接Wi-Fi:
+
+sudo nmcli dev wifi connect "308" password "308308308"
+步骤四：检查网络连接状态
+运行如下命令查看网络是否连接成功：
+
+sudo nmcli dev status
+
+如果上述步骤都无法解决问题，
+您可能需要在连接到WiFi网络之前提供NetworkManager服务所需的密码。
+您可以使用以下命令添加密码：
+sudo nmcli connection modify MyWifi wifi-sec.key-mgmt wpa-psk wifi-sec.psk mypassword
+
+彻底删除wifi连接的方法
+
+nmcli c
+
+这个命令可以获取到当前设备所有连接过多的历史连接及对于UUID号码
+
+通过
+
+sudo nmcli c del 72ffd5f4-71f8-0001-b434-6122908cfd4e
+
+----------------------------ububtu 16.04 armhf 换源---------------------------
+deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe
+deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe
+deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe
+deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe
+deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe
+deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe
+deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe
+deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe
+deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe
+deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe
+
+
+//-----------------------------------SSH连接--------------------------------------------------------
+连接
+
+ssh username@192.168.31.242
+
+断开
+
+ctrl+d
+
+
+
+//-------------------------------根目录扩容---------------------------------------
+
+参考链接：https://blog.csdn.net/YDJ18234492659/article/details/120887652
+
+查看磁盘信息：	df -h
+查看磁盘分区状态：	fdisk -l
+开始扩容：
+进入磁盘：	parted /dev/xvdb		/dev/xvdb 替换有空闲的磁盘
+	查看分区详情	p		
+	对分区进行扩容	resizepart 1	1 替换为根目录挂载的分区
+	扩容大小		-0		将剩余所有空间都分给分区
+	退出磁盘		q
+查看根目录大小是否有变化	df -h
+更新磁盘信息	resize2fs /dev/xvdb		/dev/xvdb 替换所扩容的磁盘
+
+
+

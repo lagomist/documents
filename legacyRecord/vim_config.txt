@@ -1,0 +1,86 @@
+安装 Vundle：
+
+打开终端并输入以下命令以下载 Vundle：
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+这将在您的 home 目录下的 ~/.vim/bundle 目录中创建一个 Vundle.vim 文件夹。
+
+配置 .vimrc 文件：
+
+打开您的 .vimrc 文件（如果没有，可以创建一个新文件并将其命名为 .vimrc）。
+
+添加以下配置以启用 Vundle：
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" 在此处添加您要安装的插件列表
+" 例如：Plugin 'tpope/vim-fugitive'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+这个配置文件包含了 Vundle 的基本配置，并为您提供了一个插件列表的位置，您可以在其中添加您要安装的插件。
+
+安装插件：
+
+保存 .vimrc 文件后，重新启动 Vim，输入以下命令安装您在 .vimrc 文件中列出的插件：
+
+:PluginInstall
+这将从 Vundle 仓库中下载和安装所有插件。
+
+升级插件：
+
+输入以下命令以升级您的插件：
+
+:PluginUpdate
+这将升级所有已安装的插件到最新版本。
+
+
+
+//-----------------------------.vimrc----------------------------------------------
+
+" 显示行号
+set number
+
+" 启用自动缩进
+set autoindent
+
+" 启用语法高亮
+syntax on
+
+" 启用基于语法的代码折叠
+set foldmethod=syntax
+
+" 设置默认缩进宽度为 4 个空格
+set tabstop=4
+set shiftwidth=4
+
+" 显示当前光标所在行的行号和列号
+set ruler
+
+" 启用鼠标支持
+set mouse=a
+
+" 启用命令行模式自动补全
+set wildmenu
+
+" 启用命令行模式历史记录
+set history=1000
+
+" 设置 Molokai 颜色方案
+colorscheme molokai
+
+" 自动在文件保存时执行代码格式化
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.html,*.css,*.scss,*.json,*.yml,*.md Neoformat
+
+" 启用 YouCompleteMe 代码补全插件
+" （需要先安装 YouCompleteMe 插件并按照它的安装要求配置）
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" 启用 fugitive 插件以便与 Git 集成
+" （需要先安装 fugitive 插件）
+set updatetime=100
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gc :Git commit<CR>

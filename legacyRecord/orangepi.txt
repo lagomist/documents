@@ -1,0 +1,51 @@
+用户名：Lagoria
+意味着适度之境的单词。它可以象征着平衡、简约和内心的满足。
+
+-----------------------------------------------------自动登陆设置-----------------------------------
+) 使用下面的命令可以禁止自动登录终端
+
+sudo auto_login_cli.sh -d
+
+) 使用下面的命令可以再次设置 orangepi 用户自动登录终端
+
+ sudo auto_login_cli.sh orangepi
+
+
+) 运行下面的命令可以禁止桌面版系统自动登录桌面
+
+sudo disable_desktop_autologin.sh
+
+) 执行下面的命令可以再次设置桌面版系统使用 orangepi 用户自动登录
+
+sudo desktop_login.sh orangepi
+
+----------------------------------------------------orangepi配置---------------------------------------
+打开orangepi配置菜单
+
+sudo orangepi-config
+
+-----------------------------------------------------硬盘分区挂载---------------------------------------
+查看硬盘信息，并找到需要进行挂载的硬盘
+
+sudo fdisk -l
+
+进入硬盘 mmcblk0，分区
+
+sudo fdisk /dev/mmcblk0
+
+格式化分区mmcblk0p1
+
+sudo mkfs -t ext4 /dev/mmcblk0p1
+
+查看硬盘UUID
+
+sudo blkid
+
+编辑/etc/fstab 实现自动挂载
+
+UUID=分区ID /target_path  ext4 defaults 0 0
+
+
+
+
+

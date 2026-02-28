@@ -1,0 +1,58 @@
+设置目标芯片型号运行 (初始化工程只使用一次)
+	idf.py set-target esp32
+menuconfig配置工程 
+	idf.py menuconfig
+编译工程 
+	idf.py build
+下载到单片机 
+	idf.py -p /dev/ttyS4 -b 115200 flash
+
+使用esptool的串口终端 
+	idf.py -p /dev/ttyS4 -b 115200 monitor
+
+查看本地IDF版本
+	idf.py --version
+重新工程配置
+	idf.py reconfigure
+
+http服务器
+	 python -m http.server 8070
+	退出：ctrl+C
+
+删除工程附件
+	 rm -rf sdkconfig sdkconfig.old build/
+
+编译报错高亮（CMakeLists.txt中添加）
+	add_compile_options(-fdiagnostics-color=always)
+
+
+查看端口：
+
+dmesg | grep tty
+
+
+解决：esp-idf无法打开串口（权限不足）
+方法一：
+该方法重启就会失效
+
+sudo chmod -R 777 /dev/ttyUSB0
+
+方法二：
+永久性方案：
+串口设备的默认权限是属于dialout组的
+把自己的用户加入到dialout组：
+
+sudo usermod -aG dialout user	//user替换为自己的用户名
+reboot				//必须要重启一下才会生效
+
+
+IDF找不到python3，解决如下：
+
+删除原有python2的软连接
+sudo rm /usr/bin/python
+
+新建python3的软连接
+sudo ln -s /usr/bin/python3.10 /usr/bin/python
+
+现在重新查看默认的python版本
+python --version

@@ -1,0 +1,102 @@
+/*----------------更换为清华源----------------*/
+
+sudo nano /etc/apt/sources.list
+
+
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free
+
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
+
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
+
+
+3、使用以下命令进入树莓派基金会维护软件的源。
+
+
+sudo nano /etc/apt/sources.list.d/raspi.list
+
+删除原文件所有内容，用以下内容取代：
+
+deb https://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ bullseye main 
+
+/*----------------install samba-------------*/
+更新系统
+sudo apt-get update
+sudo apt-get upgrade
+
+既然我们的Raspbian操作系统是最新的，我们现在可以继续将Samba软件安装到我们的Raspberry Pi， 我们可以通过运行以下命令来安装安装Samba所需的包
+sudo apt-get install samba
+
+在我们的Pi上设置网络存储之前，我们需要先创建一个我们将共享的文件夹， 通过运行以下命令创建此文件夹
+mkdir/home/pi/shared
+
+现在我们可以使用 Samba 共享此文件夹。为此，我们需要修改 samba 配置文件 
+sudo nano /etc/samba/smb.conf
+
+在此文件中，在底部添加以下内容。
+[myshare]
+# 可匿名访问
+path = /home/pi/shared
+writeable=Yes
+create mask=0777
+directory mask=0777
+public=yes
+browseable=yes
+
+接下来，我们需要为 Raspberry 上的 Samba 共享设置一个用户。 在本例中，我们将创建一个 Samba 用户 pi ，密码设置为： raspberry 。 运行以下命令创建用户。之后会提示您输入密码
+sudo smbpasswd -a pi
+
+最后，重启 Samba 服务
+sudo systemctl restart smbd
+
+/*--------------------安装输入法----------------------------*/
+
+安装FCITX框架和输入法：
+
+apt install fcitx fcitx-googlepinyin
+
+/*----------------------安装C/C++环境-------------------*/
+打开终端窗口，输入以下命令更新apt-get包管理器：
+
+sudo apt-get update
+
+安装C/C++编译器和调试器：
+
+sudo apt-get install build-essential gdb
+
+等待安装完成后，可以使用以下命令检查是否安装成功：
+
+gcc --version
+g++ --version
+gdb --version
+如果安装成功，会显示对应的版本信息。
+
+现在，可以使用任何文本编辑器编写C/C++代码，并使用gcc/g++命令编译和链接代码，使用gdb调试代码。
+
+/*----------------------------安装BCM2835库------------------------*/
+reference linking:
+http://www.airspayce.com/mikem/bcm2835/
+
+# download the latest version of the library, say bcm2835-1.xx.tar.gz, then:
+tar zxvf bcm2835-1.xx.tar.gz
+cd bcm2835-1.xx
+./configure
+make
+sudo make check
+sudo make install
+
+sudo adduser "${<!-- -->USER}" dialout
+sudo reboot
+
