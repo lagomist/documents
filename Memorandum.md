@@ -322,6 +322,16 @@ ssh-keygen -R 192.168.31.33
 
 **(若备份的镜像仍无法正常运行，请将bs=1024k改为bs=1M并去掉conv参数)**
 
+2. 运行时备份
+```bash
+# 原板执行
+sudo sync
+echo 3 | sudo tee /proc/sys/vm/drop_caches
+
+# 然后在 PC 端拉取
+ssh <USER>@<IP> "sudo dd if=/dev/mmcblk0 bs=4M status=progress" > backup.img
+```
+
 ---
 
 ## 串口终端
@@ -373,6 +383,12 @@ ssh-keygen -R 192.168.31.33
 	现在重新查看默认的python版本  
 	`python --version`
 
+2. 创建虚拟环境
+
+```bash
+python3 -m venv .venv
+```
+
 ---
 
 ## 动态库配置
@@ -391,3 +407,11 @@ sudo ldconfig
 ```
  
 ---
+# Android
+
+## 查看GPIO
+
+```bash
+cat /sys/kernel/debug/gpio
+gpioinfo
+```

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Memorandum</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+</head>
+<body>
+<section id="memorandum备忘录" class="level2">
+<h2>Memorandum(备忘录)</h2>
+<hr />
+<section id="markdown" class="level3">
+<h3>Markdown</h3>
+<p>链接：<a href="https://markdown.com.cn">Markdown语法</a></p>
+<hr />
+</section>
+</section>
+<section id="ubuntu" class="level2">
+<h2>Ubuntu</h2>
+<section id="软件镜像源" class="level3">
+<h3>软件镜像源</h3>
+<p><a href="https://mirrors.ustc.edu.cn/">中科大</a> Ubuntu22.04 ARM源（ubuntu-ports）</p>
+<pre><code># 默认注释了源码仓库，如有需要可自行取消注释
+deb https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy main main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy-updates main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy-updates main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy-backports main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy-backports main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy-security main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy-proposed main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu-ports/ jammy-proposed main restricted universe multiverse</code></pre>
+</section>
+<section id="终端网络代理" class="level3">
+<h3>终端网络代理</h3>
+<p><code>vim .bashrc</code></p>
+<pre><code>PROXY() {
+    export https_proxy=&quot;http://127.0.0.1:10808&quot;
+    export http_proxy=&quot;http://127.0.0.1:10808&quot;
+    export all_proxy=&quot;socks5://127.0.0.1:10808&quot;
+    export ALL_PROXY=&quot;socks5://127.0.0.1:10808&quot;
+    echo &quot;set proxy to 127.0.0.1:10808&quot;
+}
+
+UNPROXY() {
+    unset http_proxy https_proxy all_proxy ALL_PROXY
+    echo &quot;Proxy unset&quot;
+}</code></pre>
+<p>使用<br />
+<code>PROXY</code><br />
+终端命令加 <code>-E</code>,如:<br />
+<code>sudo -E add-apt-repository --update ppa:ubuntu-toolchain-r/test</code></p>
+<hr />
+</section>
+<section id="zip-解压缩" class="level3">
+<h3>zip 解压缩</h3>
+<p>解压到当前目录<br />
+<code>unzip xxx.zip</code></p>
+<p>解压到指定文件夹<br />
+<code>unzip file.zip -d destination_folder</code></p>
+<p>压缩目录<br />
+<code>zip -r xxx.zip dir</code></p>
+<hr />
+</section>
+<section id="tar-解压缩" class="level3">
+<h3>tar 解压缩</h3>
+<p>Tar选项：</p>
+<ul>
+<li>c – 创建压缩文件</li>
+<li>x – 解压文件</li>
+<li>v – 显示进度.</li>
+<li>f – 文件名.</li>
+<li>t – 查看压缩文件内容.</li>
+<li>j – 通过bzip2归档</li>
+<li>z – 通过gzip归档</li>
+<li>r – 在压缩文件中追加文件或目录</li>
+<li>W – 验证压缩文件</li>
+</ul>
+<p>e.g.<br />
+tar压缩:<br />
+<code>tar -cvf code.tar /home/abc/code/</code></p>
+<p>tar解压:<br />
+<code>tar -xvf code.tar -C /home/abc/code</code></p>
+</section>
+<section id="rar解压缩" class="level3">
+<h3>rar解压缩</h3>
+<p>使用unrar工具：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">unrar</span> x xxx.rar</span></code></pre></div>
+<hr />
+</section>
+<section id="根目录扩容" class="level3">
+<h3>根目录扩容</h3>
+<p><a href="https://blog.csdn.net/YDJ18234492659/article/details/120887652">参考链接</a></p>
+<p>查看磁盘信息： <code>df -h</code></p>
+<p>查看磁盘分区状态： <code>fdisk -l</code></p>
+<p>开始扩容：</p>
+<ol type="1">
+<li>进入磁盘： <code>parted /dev/xvdb</code><br />
+<code>/dev/xvdb</code> 替换有空闲的磁盘<br />
+</li>
+<li>查看分区详情: <code>p</code></li>
+<li>对分区进行扩容: <code>resizepart 1</code> <code>1</code> 替换为根目录挂载的分区</li>
+<li>扩容大小<br />
+<code>-0</code> 将剩余所有空间都分给分区</li>
+<li>退出磁盘: <code>q</code><br />
+</li>
+<li>查看根目录大小是否有变化: <code>df -h</code></li>
+<li>更新磁盘信息: <code>resize2fs /dev/xvdb</code><br />
+<code>/dev/xvdb</code> 替换所扩容的磁盘</li>
+</ol>
+<hr />
+</section>
+<section id="文件管理" class="level3">
+<h3>文件管理</h3>
+<p>列出文件夹中文件详细信息<br />
+<code>ls -l</code></p>
+<p>查看文件类型<br />
+<code>file name</code></p>
+<p>查看文件访问时间<br />
+<code>stat name</code></p>
+<p>查看目录文件大小<br />
+<code>du -sh</code><br />
+- s 合计目录下的文件大小 - h 格式化大小显示</p>
+<p>查找文件<br />
+<code>find [指定目录] [指定条件] [指定动作]</code><br />
+<code>find ./ -name &quot;example.txt&quot;</code></p>
+<p>查找库文件 <code>dpkg -S libxxx.a</code></p>
+<p>创建软链接 <code>ln -s 源地址 目标地址</code></p>
+<hr />
+</section>
+<section id="查看进程" class="level3">
+<h3>查看进程</h3>
+<p>终端中查看所有进程<br />
+<code>ps -aux</code></p>
+<p>查看目标进程<br />
+<code>ps -aux | grep xxx</code></p>
+<p>关闭目标进程<br />
+<code>killall -9 &lt;proc-name&gt;</code> 相当于pidof+kill<br />
+<code>pkill -9 &lt;proc-name&gt;</code> 相当于pgrep+kill</p>
+<hr />
+</section>
+<section id="安装移除deb包" class="level3">
+<h3>安装,移除deb包</h3>
+<p>安装<br />
+<code>sudo dpkg -i path_to_deb_file</code></p>
+<p>修复依赖项<br />
+<code>sudo apt install -f</code></p>
+<p>自动处理依赖安装<br />
+<code>sudo apt install -y --fix-broken path_to_deb_file</code></p>
+<p>移除<br />
+<code>dpkg -r program_name</code></p>
+<hr />
+</section>
+<section id="查询已安装软件" class="level3">
+<h3>查询已安装软件</h3>
+<p>使用 apt 命令<br />
+<code>sudo apt list --installed | grep xxx</code></p>
+<p>使用 dpkg 命令<br />
+<code>dpkg -l | grep xxx</code></p>
+<p>查看被依赖程序 <code>apt rdepends --installed xxx</code></p>
+<hr />
+</section>
+<section id="用户相关" class="level3">
+<h3>用户相关</h3>
+<section id="用户组" class="level4">
+<h4>用户组</h4>
+<ol type="1">
+<li>查看所属组<br />
+<code>groups</code><br />
+</li>
+<li>创建用户组<br />
+<code>sudo groupadd docker</code><br />
+</li>
+<li>加入用户组<br />
+<code>sudo usermod -aG docker $USER</code></li>
+</ol>
+</section>
+<section id="修改主机名" class="level4">
+<h4>修改主机名</h4>
+<ol type="1">
+<li>查看当前主机名<br />
+<code>hostnamectl</code><br />
+</li>
+<li>修改主机名为HOST<br />
+<code>sudo hostnamectl set-hostname HOST</code></li>
+</ol>
+</section>
+<section id="修改密码" class="level4">
+<h4>修改密码</h4>
+<p><code>sudo passwd user</code></p>
+</section>
+<section id="修改用户名" class="level4">
+<h4>修改用户名</h4>
+<p>推荐方式： <code>usermod -l user1 -m user0 -d /home/user1</code></p>
+<ul>
+<li><code>-l user1</code>：将登录名从 <code>user0</code> 改为 <code>user1</code></li>
+<li><code>-d /home/user1</code>：设置新的家目录路径</li>
+<li><code>-m</code>：<strong>移动</strong>原有家目录内容到新路径（若不加 <code>-m</code>，只改路径但不移动文件）</li>
+</ul>
+<p>其他方式： 1. 转为root用户：<code>sudo su</code><br />
+2. 编辑修改所有原有用户名<code>vim /etc/passwd</code><br />
+3. 编辑修所有原有改用户名<code>vim /etc/shadow</code><br />
+4. 编辑修所有原有改用户名<code>vim /etc/group</code><br />
+5. 执行以下命令，给目录重命名。 <code>cd /home</code><br />
+<code>sudo mv old_user_name new_user_name</code><br />
+6. 编辑修改所有原有用户名<code>vim /etc/sudoers</code><br />
+7. 重启</p>
+</section>
+<section id="图形界面登陆用户" class="level4">
+<h4>图形界面登陆用户</h4>
+<p><code>sudo vim /etc/lightdm/lightdm.conf</code><br />
+修改user：</p>
+<pre><code>[Seat:*]
+Aautologin-guest=false
+Aautologin-user=user
+Aautologin-user-timeout=0</code></pre>
+</section>
+<section id="wsl1登陆用户" class="level4">
+<h4>WSL1登陆用户</h4>
+<p>WSL中编辑修改用户<br />
+<code>vim /etc/wsl.conf</code></p>
+<hr />
+</section>
+</section>
+<section id="相关功能路径" class="level3">
+<h3>相关功能路径</h3>
+<p>软件源路径<br />
+<code>/etc/apt/sources.list</code><br />
+<code>/etc/apt/sources.list.d/*</code></p>
+<p>CPU温度路径<br />
+<code>/sys/class/thermal/thermal_zone0/temp</code></p>
+<p>用户全局变量路径<br />
+<code>~/.profile</code><br />
+<code>~/.bashrc</code></p>
+<p>自动磁盘挂载路径<br />
+<code>/etc/fstab</code></p>
+<hr />
+</section>
+<section id="ufw-防火墙" class="level3">
+<h3>UFW 防火墙</h3>
+<p>查看防火墙状态<br />
+<code>sudo ufw status</code></p>
+<p>允许应用端口访问<br />
+<code>sudo ufw allow appname</code></p>
+<p>打开端口<br />
+<code>sudo ufw allow port_number/protocol</code> 打开端口范围<br />
+<code>sudo ufw allow port_1:port_2/protocol</code></p>
+<p>删除UFW规则<br />
+直接删除<br />
+<code>sudo ufw delete deny port_number</code></p>
+<p>or<br />
+<code>sudo ufw delete allow port_number/protocol</code></p>
+<p>使用序号删除<br />
+<code>sudo ufw status numbered</code><br />
+<code>sudo ufw delete 1</code></p>
+<hr />
+</section>
+<section id="ssh" class="level3">
+<h3>SSH</h3>
+<ol type="1">
+<li>文件传输：</li>
+</ol>
+<ul>
+<li>file_path：需要替换为要上传文件的路径<br />
+</li>
+<li>orangepi：修改为开发板 linux 系统的用户名<br />
+</li>
+<li>192.168.xx.xx: 为开发板的 IP 地址，请根据实际情况进行修改<br />
+</li>
+<li>/home/orangepi: 修改为开发板 linux 系统中的路径</li>
+</ul>
+<p><code>scp file_path orangepi@192.168.xx.xx:/home/orangepi/</code></p>
+<p>将文件从远程机器复制到本地机器</p>
+<p><code>rsync username@ip_address:/home/username/filename .</code></p>
+<p>将文件从本地机器复制到远程机器</p>
+<p><code>rsync filename username@ip_address:/home/username</code></p>
+<ol start="2" type="1">
+<li>清除IP公钥信息：</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-R</span> 192.168.31.33</span></code></pre></div>
+<hr />
+</section>
+<section id="系统镜像备份" class="level3">
+<h3>系统镜像备份</h3>
+<p>使用dd命令将带镜像的SD中的镜像拷贝到新创建的目录中<br />
+<code>sudo dd if=/dev/sda of=./image_backup.img count=8192 bs=1M conv=sync</code></p>
+<p>上图dd命令参数的含义：</p>
+<ul>
+<li><p>if=文件名：输入文件名，缺省为标准输入。即指定源文件。&lt; if=/dev/sda &gt;</p></li>
+<li><p>of=文件名：输出文件名，缺省为标准输出。即指定目的文件。&lt;of=./image_backup.img&gt;,这里的.img是镜像的格式，转成.img格式的文件后方便后续烧录镜像</p></li>
+<li><p>bs = bytes：同时设置读入/输出的块大小为bytes个字节，填1024k，表示1M大小。</p></li>
+<li><p>count = blocks：仅拷贝blocks个块，块大小等于ibs指定的字节数，设置的是8192，表示8192个bs，也就是8G。</p></li>
+<li><p>conv= sync：将每个输入块填充到ibs个字节，不足部分用空（NUL）字符补齐。</p></li>
+</ul>
+<p><strong>(若备份的镜像仍无法正常运行，请将bs=1024k改为bs=1M并去掉conv参数)</strong></p>
+<hr />
+</section>
+<section id="串口终端" class="level3">
+<h3>串口终端</h3>
+<p>使用<code>screen</code>命令连接串口</p>
+<p><code>sudo screen /dev/ttyUSB0 115200</code></p>
+<p>使用<code>minicom</code>命令连接串口</p>
+<p><code>sudo minicom -D /dev/ttyUSB0 -b 115200</code></p>
+<hr />
+</section>
+<section id="snapd包管理工具" class="level3">
+<h3>snapd包管理工具</h3>
+<p>设置网络代理<br />
+<code>sudo snap set system proxy.http=&quot;http://127.0.0.1:10809&quot;</code><br />
+<code>sudo snap set system proxy.https=&quot;http://127.0.0.1:10809&quot;</code></p>
+<p>取消网络代理<br />
+<code>sudo snap set system proxy.http=&quot;&quot;</code><br />
+<code>sudo snap set system proxy.https=&quot;&quot;</code></p>
+<p>查看修改<br />
+<code>snap changes</code></p>
+<p>清除进程<br />
+<code>snap abort ID</code></p>
+<hr />
+</section>
+<section id="python" class="level3">
+<h3>python</h3>
+<ol type="1">
+<li><p>修改默认python</p>
+<p>查看当前系统默认python版本<br />
+<code>python --version</code></p>
+<p>查看python3<br />
+<code>whereis python3</code></p>
+<p>删除原有python2的软连接<br />
+<code>sudo rm /usr/bin/python</code></p>
+<p>新建python3的软连接<br />
+<code>sudo ln -s /usr/bin/python3.5 /usr/bin/python</code></p>
+<p>现在重新查看默认的python版本<br />
+<code>python --version</code></p></li>
+</ol>
+<hr />
+</section>
+<section id="动态库配置" class="level3">
+<h3>动态库配置</h3>
+<ol type="1">
+<li><p>设置优先使用当前目录下的动态库 临时设置：<code>export LD_LIBRARY_PATH=./</code> 用户持久设置：编辑<code>~/.bash_profile</code>添加上条配置</p></li>
+<li><p>添加进系统查找路径</p></li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vim /etc/ld.so.conf</span></code></pre></div>
+<p>下面加一行 <code>/usr/local/target/lib</code> 执行后生效</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ldconfig</span></code></pre></div>
+<hr />
+</section>
+</section>
+</body>
+</html>

@@ -116,8 +116,8 @@ sudo systemctl show --property=Environment docker
 - --network： 网络名。
 - --hostname： 容器主机名。
 - --name： 容器名。
-- ubuntu: ubuntu 镜像。
-- /bin/bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，可用bash或忽略  
+- ubuntu: 容器镜像。
+- bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，可用bash或忽略  
 
 要退出终端，直接输入 exit 或 Ctrl+D
 

@@ -257,3 +257,17 @@ git for-each-ref --format='%(refname:short)' refs/remotes/origin | xargs -n1 git
 ```
 
 这个命令会列出所有的远程分支，并逐个删除它们。
+
+# Config
+
+## 关闭权限跟踪
+```bash
+git config core.fileMode false
+```
+
+## 忽略行尾差异
+```bash
+git config core.autocrlf input
+```
+
+---
